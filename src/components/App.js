@@ -3,6 +3,7 @@ import MovieList from './MovieList.js';
 import Search from './Search.js';
 import storage from './storage.js';
 import Input from './input.js';
+import Selector from './Selector.js';
 
 
 
@@ -16,11 +17,12 @@ class App extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
 
   }
 
   handleClick () {
-
     this.setState({
       text: document.getElementById('text').value, 
       movies: storage.filter(movie => movie.title.includes(document.getElementById('text').value))
@@ -28,16 +30,26 @@ class App extends React.Component {
   }
 
   handleInput () {
-
     storage.push({title: document.getElementById('input-text').value, watched: false});
     this.setState({
       inputText: document.getElementById('input-text').value,
       movies: storage
     });
-    
+  }
+
+  handleToggle (idx) {
+    storage[idx].watched = !storage[idx].watched;
+    this.setState({
+      movies: storage
+    });
+  }
+
+  handleFilter (action) {
+    this.setState({
+      movies: storage.filter(movie => movie.watched === (action === 'Watched' ? true : (action === 'To Watch' ? false : movie.watched)))
+    });
   }
   
-
   render() {
     return (
       <div>
@@ -48,8 +60,18 @@ class App extends React.Component {
           <div><Search
             handleClick={this.handleClick}/>
           </div>
+          <div><Selector action='Watched'
+            handleFilter={this.handleFilter}/>
+          </div>
+          <div><Selector action='To Watch'
+            handleFilter={this.handleFilter}/>
+          </div>
+          <div><Selector action='All'
+            handleFilter={this.handleFilter}/>
+          </div>
         </nav>
-        <div><MovieList movies={this.state.movies}/>
+        <div><MovieList movies={this.state.movies}
+          handleToggle={this.handleToggle}/>
         </div>
       </div>
     );

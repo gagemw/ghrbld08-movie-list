@@ -3,8 +3,8 @@ var MovieListEntry = (props) => (
   <div>
     <div className="movie-list-entry-title"
     >{props.movie.title}</div>
-    <div className="movie-list-entry-watched"
-    >{props.movie.watched ? 'Watched' : null} </div>
+    <button className="movie-list-entry-watched" onClick={()=>props.handleToggle(props.idx)}
+    >{props.movie.watched ? 'Watched' : 'Not Watched'} </button>
   </div>
 );
 
