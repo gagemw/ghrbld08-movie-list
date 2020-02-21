@@ -2,7 +2,7 @@
   border: lightgrey;
   border-style: solid;
   padding: 0.4rem;
-  margin: auto;
+  margin-left: 25%;
   width: 40%;
 }
 
@@ -24,4 +24,8 @@
 
 .clicked{
   background-color: green;
+}
+
+.hide{
+  display: none;
 }

@@ -19,6 +19,7 @@ class App extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
 
   }
 
@@ -30,7 +31,7 @@ class App extends React.Component {
   }
 
   handleInput () {
-    storage.push({title: document.getElementById('input-text').value, watched: false});
+    storage.push({title: document.getElementById('input-text').value, watched: false, selected: false, year: '1', runtime: '1', metascore: '1', imdb: '1'});
     this.setState({
       inputText: document.getElementById('input-text').value,
       movies: storage
@@ -48,6 +49,11 @@ class App extends React.Component {
     this.setState({
       movies: storage.filter(movie => movie.watched === (action === 'Watched' ? true : (action === 'To Watch' ? false : movie.watched)))
     });
+  }
+  
+  handleSelect(idx) {
+    storage[idx].selected = !storage[idx].selected;
+    this.setState({movies: storage});
   }
   
   render() {
@@ -71,7 +77,7 @@ class App extends React.Component {
         </nav>
         <hr></hr>
         <div><MovieList movies={this.state.movies}
-          handleToggle={this.handleToggle}/>
+          handleToggle={this.handleToggle}handleSelect={this.handleSelect}/>
         </div>
       </div>
     );
