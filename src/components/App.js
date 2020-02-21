@@ -4,7 +4,7 @@ import Search from './Search.js';
 import storage from './storage.js';
 import Input from './input.js';
 import Selector from './Selector.js';
-
+import '../main.css';
 
 
 class App extends React.Component {
@@ -60,16 +60,16 @@ class App extends React.Component {
           <div><Search
             handleClick={this.handleClick}/>
           </div>
-          <div><Selector action='Watched'
-            handleFilter={this.handleFilter}/>
-          </div>
-          <div><Selector action='To Watch'
-            handleFilter={this.handleFilter}/>
-          </div>
-          <div><Selector action='All'
-            handleFilter={this.handleFilter}/>
-          </div>
+          <span>
+            <Selector action='Watched'
+              handleFilter={this.handleFilter}/>
+            <Selector action='To Watch'
+              handleFilter={this.handleFilter}/>
+            <Selector action='All'
+              handleFilter={this.handleFilter}/>
+          </span>
         </nav>
+        <hr></hr>
         <div><MovieList movies={this.state.movies}
           handleToggle={this.handleToggle}/>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 var Search = (props) => (
   <div className="search-bar">
-    <input id="text"/>
+    <input id="text" placeholder="Search..."/>
     <button onClick={()=>props.handleClick()}>
       <span >Go!</span>
     </button>

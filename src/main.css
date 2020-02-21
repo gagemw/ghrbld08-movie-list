@@ -1,0 +1,27 @@
+.movie-list-entry {
+  border: lightgrey;
+  border-style: solid;
+  padding: 0.4rem;
+  margin: auto;
+  width: 40%;
+}
+
+.movie-list-entry-watched {
+  margin-left: 80%;
+}
+
+.add-bar{
+  margin: auto; 
+  padding-top: 1rem;
+  width: 20%;
+}
+
+.search-bar{
+  margin: auto; 
+  padding-top: 0.4rem;
+  width: 20%;
+}
+
+.clicked{
+  background-color: green;
+}

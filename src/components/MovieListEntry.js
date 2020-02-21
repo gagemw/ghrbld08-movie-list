@@ -1,6 +1,6 @@
 import React from 'react';
 var MovieListEntry = (props) => (
-  <div>
+  <div className="movie-list-entry">
     <div className="movie-list-entry-title"
     >{props.movie.title}</div>
     <button className="movie-list-entry-watched" onClick={()=>props.handleToggle(props.idx)}
